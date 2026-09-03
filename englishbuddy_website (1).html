@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EnglishMigo — Online English for Kids</title>
+<style>
+:root{--navy:#17324d;--blue:#3b82f6;--sky:#eaf5ff;--yellow:#ffd166;--text:#243447;--muted:#66788a;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff;line-height:1.6}
+nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e8eef4;padding:16px 7%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:800;color:var(--navy)}.logo span{color:var(--blue)}
+nav a{margin-left:16px;text-decoration:none;color:var(--text);font-weight:600}
+.nav-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lang{border:1px solid #d8e4ef;background:#fff;padding:8px 11px;border-radius:10px;font-weight:800;cursor:pointer}
+.lang.active{background:var(--sky);border-color:#b9dbfb;color:var(--navy)}
+.btn{display:inline-block;padding:13px 20px;border-radius:12px;text-decoration:none;font-weight:800;border:0;cursor:pointer}
+.primary{background:var(--blue);color:#fff}.secondary{background:#fff;color:var(--navy);border:2px solid #d8e4ef}
+.hero{background:linear-gradient(135deg,#eaf5ff,#fff8df);padding:80px 7%;display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}
+.badge{display:inline-block;background:#fff;border:1px solid #d9e8f5;border-radius:999px;padding:7px 13px;font-size:14px;font-weight:700}
+h1{font-size:clamp(42px,6vw,68px);line-height:1.05;margin:18px 0;color:var(--navy)}
+h1 span{color:var(--blue)}.hero p{font-size:19px;color:var(--muted);max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.card{background:#fff;border-radius:24px;padding:28px;box-shadow:0 18px 50px rgba(31,64,93,.12)}
+.teacher{font-size:80px;text-align:center}.mini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.mini div{background:var(--sky);padding:14px;border-radius:14px;font-weight:700;text-align:center}
+section{padding:75px 7%}section h2{text-align:center;font-size:38px;color:var(--navy);margin:0 0 12px}
+.sub{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 38px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.feature{padding:25px;border:1px solid #e4edf5;border-radius:20px}.icon{font-size:34px}
+.pricing{background:#f7fbff}.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:auto}
+.price{background:#fff;border:1px solid #e1eaf2;border-radius:22px;padding:28px}.price.pop{border:3px solid var(--blue);transform:translateY(-6px)}
+.price h3{margin:0;color:var(--navy)}.amount{font-size:38px;font-weight:900;color:var(--blue);margin:10px 0}.price ul{padding-left:20px;color:var(--muted)}
+.steps{counter-reset:step}.step{position:relative;padding:25px 25px 25px 70px;border:1px solid #e4edf5;border-radius:18px}.step:before{counter-increment:step;content:counter(step);position:absolute;left:20px;top:22px;width:35px;height:35px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-weight:900}
+.countries{text-align:center}.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}.chip{background:#f1f7fc;padding:9px 14px;border-radius:999px;font-weight:700}
+.faq{max-width:850px;margin:auto}.faq details{padding:18px 0;border-bottom:1px solid #e5ebf0}.faq summary{font-weight:800;cursor:pointer}
+.cta{background:var(--navy);color:#fff;text-align:center}.cta h2{color:#fff}.cta p{color:#d8e5f0}
+form{max-width:560px;margin:25px auto 0;display:grid;gap:12px}input,select,textarea{width:100%;padding:14px;border-radius:11px;border:1px solid #ccd9e4;font:inherit}textarea{min-height:100px}
+footer{padding:25px 7%;text-align:center;color:var(--muted);font-size:14px}
+.contact-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:22px 0}
+.whatsapp{background:#25D366;color:#fff}.emailbtn{background:#fff;color:#17324d;border:2px solid #d8e4ef}
+.contact-line{margin-top:18px;font-size:15px}.contact-line a{color:#fff;font-weight:800}
+@media(max-width:800px){nav div:last-child{display:none}.hero{grid-template-columns:1fr;padding-top:55px}.grid,.prices{grid-template-columns:1fr}.price.pop{transform:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">English<span>Migo</span> 🌎</div>
+  <div class="nav-right">
+    <button class="lang active" onclick="setLang('en')">🇬🇧 EN</button>
+    <button class="lang" onclick="setLang('es')">🇪🇸 ES</button>
+    <a data-i18n="navClasses" href="#classes">Classes</a>
+    <a data-i18n="navPricing" href="#pricing">Pricing</a>
+    <a data-i18n="navFaq" href="#faq">FAQ</a>
+    <a data-i18n="navTrial" class="btn primary" href="#trial">Free Trial</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <span class="badge"><span data-i18n="heroBadge">🇮🇳 Indian teacher • 🇪🇸 Fluent Spanish • 🇬🇧 Fluent English • 💻 Online</span></span>
+    <h1><span data-i18n="heroTitle1">English classes kids actually</span> <span data-i18n="heroTitle2">enjoy.</span></h1>
+    <p data-i18n="heroText">Learn English with an Indian teacher who speaks both English and Spanish confidently. Friendly 1-to-1 online lessons for Spanish-speaking children, with fun games, stories, conversation and Spanish support when needed.</p>
+    <div class="actions">
+      <a data-i18n="heroButton" class="btn primary" href="#trial">Book a FREE Trial →</a>
+      <a data-i18n="heroPricing" class="btn secondary" href="#pricing">See Pricing</a>
+    </div>
+    <p data-i18n="heroCountries" style="font-size:14px;margin-top:16px">Perfect for families in Spain, Mexico, Colombia, Argentina and other Spanish-speaking countries.</p>
+  </div>
+  <div class="card">
+    <div class="teacher">👨‍🏫</div>
+    <h3 data-i18n="heroCardTitle" style="text-align:center;color:var(--navy);font-size:24px">Learn English. Speak with confidence.</h3>
+    <div class="mini"><div data-i18n="mini1">🎮 Fun lessons</div><div data-i18n="mini2">🗣️ Speaking</div><div data-i18n="mini3">🇪🇸 Spanish help</div><div data-i18n="mini4">⭐ 1-to-1</div></div>
+  </div>
+</header>
+
+<section id="classes">
+<h2 data-i18n="ageTitle">Made for different ages</h2><p class="sub" data-i18n="ageSub">Lessons change with your child's age, level and goals.</p>
+<div class="grid">
+  <div class="feature"><div class="icon">🧸</div><h3 data-i18n="age1Title">Ages 5–7</h3><p data-i18n="age1Text">Games, pictures, songs, simple vocabulary and first English sentences.</p></div>
+  <div class="feature"><div class="icon">📚</div><h3 data-i18n="age2Title">Ages 8–11</h3><p data-i18n="age2Text">Conversation, stories, vocabulary, pronunciation and everyday English.</p></div>
+  <div class="feature"><div class="icon">🚀</div><h3 data-i18n="age3Title">Ages 12–16</h3><p data-i18n="age3Text">Speaking confidence, grammar, school English and real-life conversations.</p></div>
+</div>
+</section>
+
+<section class="pricing" id="pricing">
+<h2 data-i18n="priceTitle">Simple monthly plans</h2><p class="sub" data-i18n="priceSub">Start small, build confidence, and upgrade when your child is ready.</p>
+<div class="prices">
+  <div class="price"><h3 data-i18n="starterTitle">Starter</h3><div class="amount">€20<span style="font-size:15px">/month</span></div><ul><li data-i18n="starter1">2 lessons/week</li><li data-i18n="starter2">30 minutes each</li><li data-i18n="starter3">1-to-1 online</li><li data-i18n="starter4">Spanish support</li></ul><a data-i18n="tryIt" class="btn secondary" href="#trial">Try it</a></div>
+  <div class="price pop"><div class="badge" data-i18n="popular">Most Popular</div><h3 data-i18n="regularTitle" style="margin-top:10px">Regular</h3><div class="amount">€30<span style="font-size:15px">/month</span></div><ul><li data-i18n="regular1">3 lessons/week</li><li data-i18n="regular2">30 minutes each</li><li data-i18n="regular3">Personalized practice</li><li data-i18n="regular4">Progress feedback</li></ul><a data-i18n="choose" class="btn primary" href="#trial">Choose this</a></div>
+  <div class="price"><h3 data-i18n="intensiveTitle">Intensive</h3><div class="amount">€45<span style="font-size:15px">/month</span></div><ul><li data-i18n="intensive1">5 lessons/week</li><li data-i18n="intensive2">30 minutes each</li><li data-i18n="intensive3">Fast speaking practice</li><li data-i18n="intensive4">Personalized goals</li></ul><a data-i18n="tryIt" class="btn secondary" href="#trial">Try it</a></div>
+</div>
+<p data-i18n="priceNote" class="sub" style="font-size:13px;margin-top:20px">Introductory/founding-student pricing. You can adjust these prices before launching.</p>
+</section>
+
+<section class="countries">
+<h2 data-i18n="countryTitle">For Spanish-speaking families 🌎</h2><p class="sub" data-i18n="countrySub">Online lessons from anywhere. No travel, no complicated setup.</p>
+<div class="chips"><span class="chip">🇪🇸 Spain</span><span class="chip">🇲🇽 Mexico</span><span class="chip">🇨🇴 Colombia</span><span class="chip">🇦🇷 Argentina</span><span class="chip">🇨🇱 Chile</span><span class="chip">🇵🇪 Peru</span><span class="chip">🇪🇨 Ecuador</span><span class="chip">🇺🇾 Uruguay</span><span class="chip">🇨🇷 Costa Rica</span><span class="chip">🇵🇦 Panama</span></div>
+</section>
+
+<section>
+<h2 data-i18n="howTitle">How it works</h2><p class="sub" data-i18n="howSub">Getting started takes just three steps.</p>
+<div class="grid steps"><div class="step"><h3 data-i18n="step1Title">Book a free trial</h3><p data-i18n="step1Text">Tell us your child's age and current English level.</p></div><div class="step"><h3 data-i18n="step2Title">Meet your teacher</h3><p data-i18n="step2Text">Try a fun 20–30 minute lesson and see if it's a good fit.</p></div><div class="step"><h3 data-i18n="step3Title">Start learning</h3><p data-i18n="step3Text">Choose a weekly plan and begin building confidence.</p></div></div>
+</section>
+
+<section id="faq">
+<h2 data-i18n="faqTitle">Parents' questions</h2>
+<div class="faq">
+<details open><summary data-i18n="faq1q">Does my child need to know English already?</summary><p data-i18n="faq1a">No. Beginners are welcome. Lessons are adapted to the child's level.</p></details>
+<details><summary data-i18n="faq2q">Can you explain things in Spanish?</summary><p data-i18n="faq2a">Yes. Spanish can be used when a child needs help understanding a difficult concept.</p></details>
+<details><summary data-i18n="faq3q">Are lessons live?</summary><p data-i18n="faq3a">Yes. Classes are live and online, with a focus on speaking and interaction.</p></details>
+<details><summary data-i18n="faq4q">How long is each class?</summary><p data-i18n="faq4a">The plans above use 30-minute lessons, which work well for younger learners.</p></details>
+</div>
+</section>
+
+<section class="cta" id="trial">
+<h2 data-i18n="ctaTitle">Ready for your child's first English lesson?</h2>
+<p data-i18n="ctaText">Book a free trial and let your child experience a fun English class.</p>
+<div class="contact-buttons">
+  <a class="btn whatsapp" href="https://wa.me/919354018685?text=Hi%20EnglishMigo%2C%20I%27d%20like%20to%20ask%20about%20online%20English%20classes%20for%20my%20child." target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a class="btn emailbtn" href="mailto:fardeenkhan51000@gmail.com">✉️ Email</a>
+</div>
+<form action="https://formsubmit.co/fardeenkhan51000@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="New EnglishMigo Free Trial Query">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://example.com/thank-you">
+<input id="parent" name="parent_name" required data-i18n-placeholder="parentPh" placeholder="Parent's name">
+<input id="email" name="parent_email" type="email" required data-i18n-placeholder="emailPh" placeholder="Email">
+<input id="phone" name="parent_phone" type="tel" required data-i18n-placeholder="phonePh" placeholder="WhatsApp number">
+<input id="child" name="child_age" required data-i18n-placeholder="childPh" placeholder="Child's age">
+<select id="level" name="english_level"><option data-i18n="levelBeginner">Beginner</option><option data-i18n="levelBasic">Basic</option><option data-i18n="levelIntermediate">Intermediate</option><option data-i18n="levelNotSure">Not sure</option></select>
+<textarea id="message" name="message" data-i18n-placeholder="messagePh" placeholder="Anything you'd like me to know?"></textarea>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+  <button data-i18n="submit" class="btn primary" type="submit">Request Free Trial</button>
+  <button data-i18n="whatsappSubmit" class="btn whatsapp" type="button" onclick="sendWhatsAppQuery()">Send via WhatsApp 💬</button>
+</div>
+</form>
+<p class="contact-line"><span data-i18n="contactLabel">You can also contact directly:</span> <a href="tel:+919354018685">+91 93540 18685</a> · <a href="mailto:fardeenkhan51000@gmail.com">fardeenkhan51000@gmail.com</a></p>
+<p style="font-size:12px;opacity:.8;margin-top:10px">Form submissions are sent to your email via FormSubmit. On first use, FormSubmit may ask you to confirm/activate the receiving email address.</p>
+</section>
+
+<footer>© 2026 EnglishMigo • Online English for Spanish-speaking kids • English + Spanish support</footer>
+
+<script>
+const translations = {
+en: {
+  navClasses:"Classes", navPricing:"Pricing", navFaq:"FAQ", navTrial:"Free Trial",
+  heroBadge:"🇮🇳 Indian teacher • 🇪🇸 Fluent Spanish • 🇬🇧 Fluent English • 💻 Online",
+  heroTitle1:"English classes kids actually", heroTitle2:"enjoy.",
+  heroText:"Learn English with an Indian teacher who speaks both English and Spanish confidently. Friendly 1-to-1 online lessons for Spanish-speaking children, with fun games, stories, conversation and Spanish support when needed.",
+  heroButton:"Book a FREE Trial →", heroPricing:"See Pricing",
+  heroCountries:"Perfect for families in Spain, Mexico, Colombia, Argentina and other Spanish-speaking countries.",
+  heroCardTitle:"Learn English. Speak with confidence.", mini1:"🎮 Fun lessons", mini2:"🗣️ Speaking", mini3:"🇪🇸 Spanish help", mini4:"⭐ 1-to-1",
+  ageTitle:"Made for different ages", ageSub:"Lessons change with your child's age, level and goals.",
+  age1Title:"Ages 5–7", age1Text:"Games, pictures, songs, simple vocabulary and first English sentences.",
+  age2Title:"Ages 8–11", age2Text:"Conversation, stories, vocabulary, pronunciation and everyday English.",
+  age3Title:"Ages 12–16", age3Text:"Speaking confidence, grammar, school English and real-life conversations.",
+  priceTitle:"Simple monthly plans", priceSub:"Start small, build confidence, and upgrade when your child is ready.",
+  starterTitle:"Starter", starter1:"2 lessons/week", starter2:"30 minutes each", starter3:"1-to-1 online", starter4:"Spanish support",
+  regularTitle:"Regular", regular1:"3 lessons/week", regular2:"30 minutes each", regular3:"Personalized practice", regular4:"Progress feedback",
+  intensiveTitle:"Intensive", intensive1:"5 lessons/week", intensive2:"30 minutes each", intensive3:"Fast speaking practice", intensive4:"Personalized goals",
+  popular:"Most Popular", tryIt:"Try it", choose:"Choose this", priceNote:"Introductory/founding-student pricing. You can adjust these prices before launching.",
+  countryTitle:"For Spanish-speaking families 🌎", countrySub:"Online lessons from anywhere. No travel, no complicated setup.",
+  howTitle:"How it works", howSub:"Getting started takes just three steps.",
+  step1Title:"Book a free trial", step1Text:"Tell us your child's age and current English level.",
+  step2Title:"Meet your teacher", step2Text:"Try a fun 20–30 minute lesson and see if it's a good fit.",
+  step3Title:"Start learning", step3Text:"Choose a weekly plan and begin building confidence.",
+  faqTitle:"Parents' questions",
+  faq1q:"Does my child need to know English already?", faq1a:"No. Beginners are welcome. Lessons are adapted to the child's level.",
+  faq2q:"Can you explain things in Spanish?", faq2a:"Yes. Spanish can be used when a child needs help understanding a difficult concept.",
+  faq3q:"Are lessons live?", faq3a:"Yes. Classes are live and online, with a focus on speaking and interaction.",
+  faq4q:"How long is each class?", faq4a:"The plans above use 30-minute lessons, which work well for younger learners.",
+  ctaTitle:"Ready for your child's first English lesson?", ctaText:"Book a free trial and let your child experience a fun English class.",
+  parentPh:"Parent's name", emailPh:"Email", phonePh:"WhatsApp number", childPh:"Child's age", messagePh:"Anything you'd like me to know?", submit:"Request Free Trial", whatsappSubmit:"Send via WhatsApp 💬",
+  success:"Thanks! Your request is ready — connect this form to your email/WhatsApp before launch.",
+contactLabel:"You can also contact directly:",
+levelBeginner:"Beginner", levelBasic:"Basic", levelIntermediate:"Intermediate", levelNotSure:"Not sure"
+},
+es: {
+  navClasses:"Clases", navPricing:"Precios", navFaq:"Preguntas", navTrial:"Prueba gratis",
+  heroBadge:"🇮🇳 Profesor de India • 🇪🇸 Español fluido • 🇬🇧 Inglés fluido • 💻 Online",
+  heroTitle1:"Clases de inglés que los niños", heroTitle2:"disfrutan de verdad.",
+  heroText:"Aprende inglés con un profesor de India que habla español e inglés con confianza. Clases online, individuales y divertidas para niños hispanohablantes, con juegos, historias, conversación y apoyo en español cuando lo necesiten.",
+  heroButton:"Reserva una PRUEBA GRATIS →", heroPricing:"Ver precios",
+  heroCountries:"Perfecto para familias de España, México, Colombia, Argentina y otros países hispanohablantes.",
+  heroCardTitle:"Aprende inglés. Habla con confianza.", mini1:"🎮 Clases divertidas", mini2:"🗣️ Conversación", mini3:"🇪🇸 Ayuda en español", mini4:"⭐ Individual",
+  ageTitle:"Para diferentes edades", ageSub:"Las clases se adaptan a la edad, nivel y objetivos de cada niño.",
+  age1Title:"5–7 años", age1Text:"Juegos, imágenes, canciones, vocabulario sencillo y primeras frases en inglés.",
+  age2Title:"8–11 años", age2Text:"Conversación, historias, vocabulario, pronunciación e inglés cotidiano.",
+  age3Title:"12–16 años", age3Text:"Confianza al hablar, gramática, inglés escolar y conversaciones de la vida real.",
+  priceTitle:"Planes mensuales sencillos", priceSub:"Empieza poco a poco, gana confianza y cambia de plan cuando tu hijo esté listo.",
+  starterTitle:"Inicial", starter1:"2 clases/semana", starter2:"30 minutos cada una", starter3:"Online individual", starter4:"Ayuda en español",
+  regularTitle:"Regular", regular1:"3 clases/semana", regular2:"30 minutos cada una", regular3:"Práctica personalizada", regular4:"Seguimiento del progreso",
+  intensiveTitle:"Intensivo", intensive1:"5 clases/semana", intensive2:"30 minutos cada una", intensive3:"Práctica rápida de conversación", intensive4:"Objetivos personalizados",
+  popular:"Más popular", tryIt:"Probar", choose:"Elegir este", priceNote:"Precio introductorio para los primeros alumnos. Puedes cambiar estos precios antes de lanzar la web.",
+  countryTitle:"Para familias hispanohablantes 🌎", countrySub:"Clases online desde cualquier lugar. Sin desplazamientos y sin complicaciones.",
+  howTitle:"Cómo funciona", howSub:"Empezar solo requiere tres pasos.",
+  step1Title:"Reserva una prueba gratis", step1Text:"Cuéntanos la edad de tu hijo y su nivel actual de inglés.",
+  step2Title:"Conoce al profesor", step2Text:"Prueba una clase divertida de 20–30 minutos y comprueba si encaja.",
+  step3Title:"Empieza a aprender", step3Text:"Elige un plan semanal y comienza a ganar confianza.",
+  faqTitle:"Preguntas de los padres",
+  faq1q:"¿Mi hijo necesita saber inglés?", faq1a:"No. Los principiantes son bienvenidos. Las clases se adaptan al nivel del niño.",
+  faq2q:"¿Puedes explicar las cosas en español?", faq2a:"Sí. Podemos usar español cuando el niño necesite ayuda para entender un concepto.",
+  faq3q:"¿Las clases son en directo?", faq3a:"Sí. Las clases son en directo y online, con enfoque en conversación e interacción.",
+  faq4q:"¿Cuánto dura cada clase?", faq4a:"Los planes anteriores usan clases de 30 minutos, una duración que funciona bien para niños pequeños.",
+  ctaTitle:"¿Listo para la primera clase de inglés de tu hijo?", ctaText:"Reserva una prueba gratis y deja que tu hijo pruebe una clase de inglés divertida.",
+  parentPh:"Nombre del padre/madre", emailPh:"Correo electrónico", phonePh:"Número de WhatsApp", childPh:"Edad del niño", messagePh:"¿Hay algo que quieras contarnos?", submit:"Solicitar prueba gratis", whatsappSubmit:"Enviar por WhatsApp 💬",
+  success:"¡Gracias! Tu solicitud está lista — conecta este formulario con tu email/WhatsApp antes de publicar la web.",
+contactLabel:"También puedes contactar directamente:",
+levelBeginner:"Principiante", levelBasic:"Básico", levelIntermediate:"Intermedio", levelNotSure:"No estoy seguro"
+}
+};
+
+
+function sendWhatsAppQuery(){
+  const parent = document.getElementById("parent").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const child = document.getElementById("child").value.trim();
+  const level = document.getElementById("level").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if(!parent || !email || !phone || !child){
+    alert(document.documentElement.lang === "es"
+      ? "Por favor, completa nombre, correo, WhatsApp y edad."
+      : "Please fill in name, email, WhatsApp number and child age.");
+    return;
+  }
+
+  const text = document.documentElement.lang === "es"
+    ? `Hola EnglishMigo! Quiero reservar una clase de prueba gratis.%0A%0ANombre: ${parent}%0ACorreo: ${email}%0AWhatsApp: ${phone}%0AEdad del niño: ${child}%0ANivel: ${level}%0AMensaje: ${message || "—"}`
+    : `Hi EnglishMigo! I'd like to book a free trial.%0A%0AParent: ${parent}%0AEmail: ${email}%0AWhatsApp: ${phone}%0AChild age: ${child}%0ALevel: ${level}%0AMessage: ${message || "—"}`;
+
+  window.open("https://wa.me/919354018685?text=" + encodeURIComponent(text), "_blank", "noopener");
+}
+
+function setLang(lang){
+  document.documentElement.lang = lang === "es" ? "es" : "en";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.dataset.i18n;
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+    const key = el.dataset.i18nPlaceholder;
+    if (translations[lang][key]) el.placeholder = translations[lang][key];
+  });
+  document.querySelectorAll("option[data-i18n]").forEach(el=>{
+    const key = el.dataset.i18n;
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll(".lang").forEach(btn=>btn.classList.remove("active"));
+  document.querySelector(`.lang[onclick="setLang('${lang}')"]`).classList.add("active");
+  localStorage.setItem("englishbuddy-lang",lang);
+}
+const savedLang = localStorage.getItem("englishbuddy-lang") || "en";
+setLang(savedLang);
+</script>
+</body>
+</html>
